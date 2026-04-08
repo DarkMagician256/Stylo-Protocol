@@ -30,6 +30,9 @@
     "tailwindcss": "^4.0.0",
     "typescript": "^5.4.0"
   },
+  "overrides": {
+    "@react-three/fiber": "9.0.0-rc.3"
+  },
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
