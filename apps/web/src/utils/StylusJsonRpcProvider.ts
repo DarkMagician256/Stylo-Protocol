@@ -5,6 +5,10 @@ import { JsonRpcProvider, TransactionRequest, hexlify } from "ethers";
  * and gas estimation logic for the STYLO institutional layer.
  */
 export class StylusJsonRpcProvider extends JsonRpcProvider {
+  constructor(url?: string) {
+    super(url);
+  }
+
   /**
    * Overrides gas estimation to include Stylus-specific ink and execution price headers.
    * This prevents transaction rejections due to WASM-specific overhead that standard 
