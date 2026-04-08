@@ -1,0 +1,141 @@
+"use client";
+
+"use client";
+
+import { useState, useEffect } from "react";
+import { Cpu } from "lucide-react";
+
+interface Vault {
+  address: string;
+  name: string;
+  strategy: string;
+  tvl: number;
+  apy: {
+    total: number;
+    gmxFees: number;
+    pendleYield: number;
+    rwaBase: number;
+  };
+  allocation: {
+    gmx: number;
+    pendle: number;
+    rwa: number;
+  };
+}
+
+export function Vaults() {
+  const [vaults, setVaults] = useState<Vault[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/vaults")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.success) setVaults(data.data.vaults);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="p-6 md:p-10">
+        <div className="skeleton h-[400px] w-full rounded-2xl" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="p-4 sm:p-6 md:p-10 max-w-7xl mx-auto animate-fade-in-up">
+      <div className="mb-8 sm:mb-10">
+        <h1 className="text-2xl sm:text-3xl font-bold mb-2">Stylus Optimized Vaults</h1>
+        <p className="text-white/50 max-w-2xl text-sm sm:text-base">
+          ERC-4626 standard vaults utilizing Rust-native Arbitrum Stylus for complex math and 10x lower execution
+          costs. Managed by x402 AI Agents.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+        {vaults.map((vault) => (
+          <div key={vault.address} className="glass-card p-6 sm:p-8 flex flex-col">
+            <div className="flex justify-between items-start mb-6 gap-4">
+              <div className="min-w-0">
+                <h2 className="text-xl sm:text-2xl font-bold mb-1 truncate">{vault.name}</h2>
+                <div className="font-mono text-xs text-white/40 mb-3 truncate">{vault.address}</div>
+                <div className="inline-flex items-center space-x-1.5 bg-indigo-500/20 text-indigo-300 px-2 py-1 rounded text-xs">
+                  <Cpu className="w-3 h-3" />
+                  <span>Stylus Native</span>
+                </div>
+              </div>
+              <div className="text-right shrink-0">
+                <div className="text-sm text-white/50 mb-1">Total APY</div>
+                <div className="text-3xl font-black text-emerald-400">{vault.apy.total}%</div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+                <div className="text-xs text-white/40 mb-1">TVL</div>
+                <div className="text-xl font-bold">${(vault.tvl / 1000000).toFixed(2)}M</div>
+              </div>
+              <div className="bg-white/5 p-4 rounded-xl border border-white/10">
+                <div className="text-xs text-white/40 mb-1">7D Avg</div>
+                <div className="text-xl font-bold text-white/80">{vault.apy.total - 0.4}%</div>
+              </div>
+            </div>
+
+            {/* Allocation breakdown */}
+            <div className="mb-8">
+              <div className="flex justify-between text-xs text-white/50 mb-2">
+                <span>Strategy Allocation</span>
+                <span>Active</span>
+              </div>
+              <div className="h-2 w-full bg-black/50 rounded-full overflow-hidden flex">
+                <div
+                  style={{ width: `${vault.allocation.gmx}%` }}
+                  className="bg-cyan-400 h-full"
+                  title={`GMX: ${vault.allocation.gmx}%`}
+                />
+                <div
+                  style={{ width: `${vault.allocation.pendle}%` }}
+                  className="bg-indigo-400 h-full"
+                  title={`Pendle: ${vault.allocation.pendle}%`}
+                />
+                <div
+                  style={{ width: `${vault.allocation.rwa}%` }}
+                  className="bg-amber-400 h-full"
+                  title={`RWA: ${vault.allocation.rwa}%`}
+                />
+              </div>
+              <div className="flex flex-wrap gap-x-4 gap-y-2 mt-3 text-xs">
+                {vault.allocation.gmx > 0 && (
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-cyan-400 mr-2" />
+                    GMX v2: {vault.allocation.gmx}%
+                  </div>
+                )}
+                {vault.allocation.pendle > 0 && (
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-indigo-400 mr-2" />
+                    Pendle: {vault.allocation.pendle}%
+                  </div>
+                )}
+                {vault.allocation.rwa > 0 && (
+                  <div className="flex items-center">
+                    <div className="w-2 h-2 rounded-full bg-amber-400 mr-2" />
+                    RWA: {vault.allocation.rwa}%
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div className="mt-auto pt-6 border-t border-white/10 flex space-x-4">
+              <button className="btn-primary flex-1">Deposit</button>
+              <button className="btn-glass flex-1">Withdraw</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

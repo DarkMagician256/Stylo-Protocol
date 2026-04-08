@@ -1,0 +1,45 @@
+{
+  "name": "@stylo/sdk",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./types": {
+      "import": "./dist/types/index.js",
+      "types": "./dist/types/index.d.ts"
+    },
+    "./pyth": {
+      "import": "./dist/pyth/index.js",
+      "types": "./dist/pyth/index.d.ts"
+    },
+    "./layerzero": {
+      "import": "./dist/layerzero/index.js",
+      "types": "./dist/layerzero/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsc -w -p tsconfig.json",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "lint": "eslint src/"
+  },
+  "dependencies": {
+    "@pythnetwork/hermes-client": "^1.3.0",
+    "@layerzerolabs/lz-evm-sdk-v2": "^2.3.0",
+    "ethers": "^6.13.0",
+    "viem": "^2.21.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.0",
+    "vitest": "^2.1.0"
+  }
+}

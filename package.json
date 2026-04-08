@@ -1,0 +1,47 @@
+{
+  "name": "stylo-protocol",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sovereign AI Infrastructure for Institutional DeFi — Bridging LATAM RWAs with Arbitrum via AI Agents",
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "concurrently -n web,api -c cyan,magenta \"pnpm --filter @stylo/web dev\" \"pnpm --filter @stylo/backend-api dev\"",
+    "dev:web": "pnpm --filter @stylo/web dev",
+    "dev:api": "pnpm --filter @stylo/backend-api dev",
+    "build": "pnpm -r run build",
+    "build:web": "pnpm --filter @stylo/web build",
+    "build:api": "pnpm --filter @stylo/backend-api build",
+    "test": "pnpm -r run test",
+    "test:web": "pnpm --filter @stylo/web test",
+    "test:api": "pnpm --filter @stylo/backend-api test",
+    "test:contracts": "cd packages/contracts && cargo test",
+    "lint": "pnpm -r run lint",
+    "typecheck": "pnpm -r run typecheck",
+    "clean": "pnpm -r run clean",
+    "stylus:check": "cd packages/contracts && cargo stylus check",
+    "stylus:deploy": "cd packages/contracts && cargo stylus deploy --private-key $DEPLOYER_KEY",
+    "e2e": "pnpm --filter @stylo/web e2e",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "husky": "^9.1.0",
+    "lint-staged": "^15.4.0",
+    "prettier": "^3.4.0",
+    "typescript": "^5.4.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
+  }
+}

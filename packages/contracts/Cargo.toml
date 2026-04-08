@@ -1,0 +1,23 @@
+[package]
+name = "stylo-contracts"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "Stylo Protocol — Arbitrum Stylus Smart Contracts"
+
+[dependencies]
+stylus-sdk = "0.6.1"
+alloy-primitives = "0.7"
+alloy-sol-types = "0.7"
+mini-alloc = "0.4"
+
+[dev-dependencies]
+tokio = { version = "1", features = ["full"] }
+hex = "0.4"
+
+[features]
+export-abi = ["stylus-sdk/export-abi"]
+
+[lib]
+crate-type = ["cdylib"]
+path = "src/lib.rs"
