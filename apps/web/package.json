@@ -29,5 +29,15 @@
     "@types/three": "^0.170.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.4.0"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@react-three/fiber"
+      ],
+      "allowedVersions": {
+        "@react-three/fiber": "9.0.0-rc.3"
+      }
+    }
   }
 }
