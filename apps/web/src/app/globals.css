@@ -193,6 +193,32 @@ body {
   gap: 2rem;
 }
 
+/* Landing responsive helpers */
+.landing-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 1280px;
+  margin-top: 4rem;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.landing-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
 .feature-card {
   padding: 2.5rem;
   border-radius: 16px;
@@ -297,3 +323,400 @@ body {
   color: #ccff00;
 }
 
+/* =============================================
+   RESPONSIVE — LANDING / HOME SECTION
+   ============================================= */
+
+/* Tablet & below (< 1024px) */
+@media (max-width: 1023px) {
+  .landing-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .landing-feature-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  /* Hero section padding */
+  .landing-hero-section {
+    padding: 2.5rem 1rem !important;
+    min-height: 80vh !important;
+  }
+
+  /* Title size already uses clamp; just ensure it doesn't overflow */
+  .landing-title {
+    font-size: clamp(2.4rem, 11vw, 4.5rem) !important;
+    letter-spacing: -0.04em !important;
+    line-height: 0.95 !important;
+    word-break: break-word !important;
+  }
+
+  /* Subtitle */
+  .landing-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.1rem) !important;
+    margin-bottom: 2rem !important;
+  }
+
+  /* CTA buttons: stack on very narrow screens */
+  .landing-cta {
+    flex-direction: column !important;
+    width: 100%;
+  }
+
+  .landing-cta a,
+  .landing-cta button {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+    padding: 1rem 2rem !important;
+  }
+
+  /* Stat cards: 2 columns on mobile */
+  .landing-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    padding: 0 0.5rem;
+  }
+
+  /* Feature section padding */
+  .landing-features-section {
+    padding: 4rem 1rem !important;
+  }
+
+  /* Feature cards: single column */
+  .landing-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer bottom bar */
+  .footer-bottom-bar {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+
+  /* Footer grid */
+  .footer-inner > div:first-child {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Navbar: ensure right side doesn't overflow */
+  .navbar {
+    padding: 0 1rem;
+  }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 479px) {
+  .landing-stat-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+  }
+
+  .landing-badge {
+    font-size: 0.65rem !important;
+    padding: 0.4rem 0.75rem !important;
+    text-align: center;
+  }
+
+  .btn-primary,
+  .btn-glass {
+    font-size: 0.85rem;
+  }
+}
+
+/* Very small (< 360px) */
+@media (max-width: 359px) {
+  .landing-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .landing-title {
+    font-size: 2.2rem !important;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — DASHBOARD SECTION
+   ============================================= */
+
+.dashboard-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.dashboard-main-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1.5rem;
+}
+
+.dashboard-feed-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.dashboard-feed-item-left {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Tablet & below (< 1024px) */
+@media (max-width: 1023px) {
+  .dashboard-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .dashboard-main-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .dashboard-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .dashboard-main-grid {
+    gap: 1.5rem;
+  }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 479px) {
+  .dashboard-feed-item {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .dashboard-feed-item-right {
+    text-align: left !important;
+  }
+  
+  .dashboard-feed-item-left {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — VAULTS SECTION
+   ============================================= */
+
+.vaults-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.vaults-cta {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.vaults-cta .btn-primary {
+  flex: 2;
+  justify-content: center;
+}
+
+.vaults-cta .btn-glass {
+  flex: 1;
+  padding: 0.5rem;
+  justify-content: center;
+}
+
+/* Tablet & below (< 1024px) */
+@media (max-width: 1023px) {
+  .vaults-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .vaults-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .vaults-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .vaults-cta .btn-primary,
+  .vaults-cta .btn-glass {
+    flex: none;
+    width: 100%;
+    padding: 1rem !important;
+  }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 479px) {
+  .vaults-grid {
+    gap: 1rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — RWA BRIDGE SECTION
+   ============================================= */
+
+.rwa-bridge-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+}
+
+.rwa-tabs-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.rwa-pdf-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.intel-row-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* Tablet & below (< 1024px) */
+@media (max-width: 1023px) {
+  .rwa-bridge-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .rwa-tabs-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 479px) {
+  .intel-row-grid {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+  
+  .rwa-pdf-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — MARKETPLACE SECTION
+   ============================================= */
+
+.marketplace-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.marketplace-cta {
+  display: flex;
+  gap: 0.8rem;
+}
+
+/* Tablet & below (< 1024px) */
+@media (max-width: 1023px) {
+  .marketplace-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .marketplace-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .marketplace-cta {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .marketplace-cta button {
+    width: 100% !important;
+    padding: 1rem !important;
+  }
+}
+
+/* Small mobile (< 480px) */
+@media (max-width: 479px) {
+  .marketplace-grid {
+    gap: 1rem;
+  }
+}
+
+/* =============================================
+   RESPONSIVE — AUDIT EXPLORER SECTION
+   ============================================= */
+
+.audit-log-grid {
+  display: grid;
+  grid-template-columns: 100px 150px 1fr 40px;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+/* Tablet (< 1024px) */
+@media (max-width: 1023px) {
+  .audit-log-grid {
+    grid-template-columns: 80px 120px 1fr 30px;
+    gap: 1rem;
+  }
+}
+
+/* Mobile (< 768px) */
+@media (max-width: 767px) {
+  .audit-log-grid {
+    grid-template-columns: 1fr 40px;
+    gap: 0.5rem;
+    grid-template-areas: 
+      "time status"
+      "agent agent"
+      "action action";
+    align-items: start;
+  }
+  
+  .audit-log-time { grid-area: time; margin-bottom: 0.25rem; }
+  .audit-log-agent { grid-area: agent; margin-bottom: 0.25rem; }
+  .audit-log-action { grid-area: action; line-height: 1.4; word-break: break-word; }
+  .audit-log-status { grid-area: status; justify-self: end; }
+}
+
+/* Very small mobile (< 480px) */
+@media (max-width: 479px) {
+  .audit-log-grid {
+    padding: 0.75rem 0 !important;
+  }
+}

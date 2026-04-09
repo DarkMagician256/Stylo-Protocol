@@ -41,3 +41,6 @@ packages/contracts/target/
 
 # Misc
 *.tsbuildinfo
+
+.vercel
+.env*.local

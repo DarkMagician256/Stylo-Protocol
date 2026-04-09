@@ -65,7 +65,7 @@ export function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div style={{ marginTop: "4rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.05)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
+        <div className="footer-bottom-bar" style={{ marginTop: "4rem", paddingTop: "2rem", borderTop: "1px solid rgba(255,255,255,0.05)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
            <div style={{ fontSize: "0.75rem", color: "rgba(255,255,255,0.3)" }}>
               © 2026 STYLO PROTOCOL _ NEON_INSTITUTIONAL_CORE
            </div>

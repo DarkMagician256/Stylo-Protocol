@@ -35,11 +35,11 @@ export function Marketplace() {
   return (
     <div className="page-wrapper animate-fade-in-up" style={{ color: "#fff" }}>
       <header style={{ textAlign: "center", marginBottom: "4rem" }}>
-        <h1 className="page-title" style={{ fontSize: "3rem", color: "#CCFF00", textShadow: "0 0 30px rgba(204, 255, 0, 0.2)" }}>AGENT_MARKETPLACE</h1>
-        <p className="page-subtitle">Monetize AI signals or delegate capital via x402 Micropayments.</p>
+        <h1 className="page-title" style={{ fontSize: "clamp(2rem, 6vw, 3rem)", color: "#CCFF00", textShadow: "0 0 30px rgba(204, 255, 0, 0.2)", wordBreak: "break-word" }}>AGENT_MARKETPLACE</h1>
+        <p className="page-subtitle" style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)" }}>Monetize AI signals or delegate capital via x402 Micropayments.</p>
       </header>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "2rem" }}>
+      <div className="marketplace-grid">
         {agents.map((agent, i) => (
           <motion.div
             key={agent.name}
@@ -63,23 +63,23 @@ export function Marketplace() {
               </div>
             </div>
 
-            <h3 style={{ fontSize: "1.25rem", fontWeight: "900", marginBottom: "0.5rem" }}>{agent.name}</h3>
-            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.45)", marginBottom: "1.5rem" }}>{agent.strategy}</p>
+            <h3 style={{ fontSize: "clamp(1.1rem, 4vw, 1.25rem)", fontWeight: "900", marginBottom: "0.5rem", wordBreak: "break-word" }}>{agent.name}</h3>
+            <p style={{ fontSize: "0.85rem", color: "rgba(255,255,255,0.45)", marginBottom: "1.5rem", wordBreak: "break-word" }}>{agent.strategy}</p>
 
             <div style={{ display: "flex", justifyContent: "space-between", background: "rgba(255,255,255,0.02)", padding: "1rem", borderRadius: "8px", marginBottom: "1.5rem" }}>
               <div>
                 <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" }}>7D Performance</div>
-                <div style={{ fontSize: "1.1rem", color: "#CCFF00", fontWeight: "800" }}>{agent.perf}</div>
+                <div style={{ fontSize: "clamp(1rem, 3vw, 1.1rem)", color: "#CCFF00", fontWeight: "800", wordBreak: "break-word" }}>{agent.perf}</div>
               </div>
               <div style={{ textAlign: "right" }}>
                 <div style={{ fontSize: "0.65rem", color: "rgba(255,255,255,0.3)", textTransform: "uppercase" }}>Signal Cost</div>
-                <div style={{ fontSize: "1.1rem", color: "#fff", fontWeight: "800" }}>{agent.cost}</div>
+                <div style={{ fontSize: "clamp(1rem, 3vw, 1.1rem)", color: "#fff", fontWeight: "800", wordBreak: "break-word" }}>{agent.cost}</div>
               </div>
             </div>
 
-            <div style={{ display: "flex", gap: "0.8rem" }}>
-              <button className="btn-primary" style={{ flex: 1, fontSize: "0.8rem" }}>DELEGATE</button>
-              <button className="btn-glass" style={{ flex: 1, fontSize: "0.8rem" }}>BUY SIGNAL</button>
+            <div className="marketplace-cta">
+              <button className="btn-primary" style={{ flex: 1, fontSize: "0.8rem", justifyContent: "center" }}>DELEGATE</button>
+              <button className="btn-glass" style={{ flex: 1, fontSize: "0.8rem", justifyContent: "center" }}>BUY SIGNAL</button>
             </div>
           </motion.div>
         ))}

@@ -43,11 +43,11 @@ export function Vaults() {
   return (
     <div className="page-wrapper" style={{ color: "#fff" }}>
       <header style={{ marginBottom: "3rem" }}>
-        <h1 className="page-title" style={{ color: "#CCFF00" }}>INSTITUTIONAL_VAULTS</h1>
-        <p className="page-subtitle">Native Arbitrum Stylus orchestration for yelding US Treasuries.</p>
+        <h1 className="page-title" style={{ color: "#CCFF00", fontSize: "clamp(2rem, 6vw, 3rem)", wordBreak: "break-word" }}>INSTITUTIONAL_VAULTS</h1>
+        <p className="page-subtitle" style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)" }}>Native Arbitrum Stylus orchestration for yelding US Treasuries.</p>
       </header>
 
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(350px, 1fr))", gap: "2rem" }}>
+      <div className="vaults-grid">
         {vaults.map((vault) => (
           <motion.div
             key={vault.id}
@@ -61,14 +61,14 @@ export function Vaults() {
               overflow: "hidden"
             }}
           >
-            <div style={{ position: "absolute", top: 0, right: 0, padding: "0.5rem 1rem", background: "rgba(204, 255, 0, 0.1)", color: "#CCFF00", fontSize: "0.6rem", fontWeight: "800", letterSpacing: "0.1em" }}>
+            <div style={{ position: "absolute", top: 0, right: 0, padding: "0.5rem 1rem", background: "rgba(204, 255, 0, 0.1)", color: "#CCFF00", fontSize: "clamp(0.5rem, 2vw, 0.6rem)", fontWeight: "800", letterSpacing: "0.1em" }}>
               {vault.privacy}
             </div>
 
             <div style={{ marginBottom: "1.5rem" }}>
-              <div className="vault-tag" style={{ background: "rgba(204, 255, 0, 0.05)", border: "1px solid rgba(204, 255, 0, 0.1)", color: "rgba(204, 255, 0, 0.8)" }}>{vault.provider}</div>
-              <h2 style={{ fontSize: "1.5rem", fontWeight: "800", marginBottom: "0.5rem" }}>{vault.name}</h2>
-              <div style={{ display: "flex", gap: "1rem", fontSize: "0.8rem", color: "rgba(255,255,255,0.4)" }}>
+              <div className="vault-tag" style={{ background: "rgba(204, 255, 0, 0.05)", border: "1px solid rgba(204, 255, 0, 0.1)", color: "rgba(204, 255, 0, 0.8)", wordBreak: "break-word" }}>{vault.provider}</div>
+              <h2 style={{ fontSize: "clamp(1.25rem, 4vw, 1.5rem)", fontWeight: "800", marginBottom: "0.5rem", wordBreak: "break-word" }}>{vault.name}</h2>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem", fontSize: "0.8rem", color: "rgba(255,255,255,0.4)" }}>
                 <span>Asset: {vault.asset}</span>
                 <span>TVL: {vault.tvl}</span>
               </div>
@@ -76,13 +76,13 @@ export function Vaults() {
 
             <div style={{ background: "rgba(204, 255, 0, 0.03)", padding: "1.5rem", borderRadius: "12px", border: "1px solid rgba(204, 255, 0, 0.05)", marginBottom: "1.5rem" }}>
               <div style={{ fontSize: "0.75rem", color: "rgba(204, 255, 0, 0.6)", textTransform: "uppercase", marginBottom: "0.5rem" }}>Projected Swarm APY</div>
-              <div style={{ fontSize: "2.5rem", fontWeight: "900", color: "#CCFF00", letterSpacing: "-0.04em" }}>{vault.apy}</div>
+              <div style={{ fontSize: "clamp(2rem, 8vw, 2.5rem)", fontWeight: "900", color: "#CCFF00", letterSpacing: "-0.04em", wordBreak: "break-word" }}>{vault.apy}</div>
               <div style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.6)", marginTop: "0.5rem" }}>{vault.breakdown}</div>
             </div>
 
-            <div style={{ display: "flex", gap: "0.8rem" }}>
-              <button className="btn-primary" style={{ flex: 2 }}>DEPOSIT_LIQUIDITY</button>
-              <button className="btn-glass" style={{ flex: 1, padding: "0.5rem" }}><ArrowUpRight width={18} height={18} /></button>
+            <div className="vaults-cta">
+              <button className="btn-primary">DEPOSIT_LIQUIDITY</button>
+              <button className="btn-glass"><ArrowUpRight width={18} height={18} /></button>
             </div>
 
             <div style={{ marginTop: "1.5rem", display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.7rem", color: "rgba(255,255,255,0.3)" }}>

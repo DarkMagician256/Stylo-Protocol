@@ -11,6 +11,7 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
+    { name: "Home", path: "/" },
     { name: "Dashboard", path: "/dashboard" },
     { name: "Vaults", path: "/vaults" },
     { name: "RWA Intel", path: "/rwa-bridge" },

@@ -10,11 +10,11 @@ export function RWABridge() {
   return (
     <div className="page-wrapper animate-fade-in-up" style={{ color: "#fff" }}>
       <header style={{ marginBottom: "3rem" }}>
-        <h1 className="page-title" style={{ color: "#CCFF00", fontSize: "2.5rem" }}>RWA_INTEL_LAYER</h1>
-        <p className="page-subtitle">Real-time transparency and proof-of-reserves for Institutional US Treasuries.</p>
+        <h1 className="page-title" style={{ color: "#CCFF00", fontSize: "clamp(2rem, 6vw, 2.5rem)", wordBreak: "break-word" }}>RWA_INTEL_LAYER</h1>
+        <p className="page-subtitle" style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)" }}>Real-time transparency and proof-of-reserves for Institutional US Treasuries.</p>
       </header>
 
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: "2rem" }}>
+      <div className="rwa-bridge-grid">
         {/* Transparency Panel */}
         <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           <div className="glass-card" style={{ padding: "1.5rem", border: "1px solid rgba(204, 255, 0, 0.1)" }}>
@@ -53,12 +53,12 @@ export function RWABridge() {
 
         {/* Real-time Intel Feed */}
         <div className="glass-card" style={{ padding: "2rem", border: "1px solid rgba(204, 255, 0, 0.15)" }}>
-           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem" }}>
-              <div style={{ display: "flex", gap: "1rem" }}>
+           <div className="rwa-tabs-header">
+              <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
                  <button onClick={() => setActiveTab("Ondo")} style={{ background: "transparent", border: "none", color: activeTab === "Ondo" ? "#CCFF00" : "rgba(255,255,255,0.4)", fontWeight: "800", fontSize: "0.8rem", cursor: "pointer", borderBottom: activeTab === "Ondo" ? "2px solid #CCFF00" : "none", paddingBottom: "0.25rem" }}>ONDO_FINANCE</button>
                  <button onClick={() => setActiveTab("OpenEden")} style={{ background: "transparent", border: "none", color: activeTab === "OpenEden" ? "#CCFF00" : "rgba(255,255,255,0.4)", fontWeight: "800", fontSize: "0.8rem", cursor: "pointer", borderBottom: activeTab === "OpenEden" ? "2px solid #CCFF00" : "none", paddingBottom: "0.25rem" }}>OPENEDEN</button>
               </div>
-              <div style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.7rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+              <div className="activity-badge" style={{ color: "rgba(255,255,255,0.2)", fontSize: "0.7rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
                 <Activity size={12} color="#CCFF00" />
                 API_V2026_CONNECTED
               </div>
@@ -93,9 +93,9 @@ export function RWABridge() {
                 All RWA movements are audited by the Neural Swarm and published to the BlackBox Archive. 
                 View cryptographically signed attestation reports (v2026) below.
               </p>
-              <div style={{ marginTop: "1rem", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
-                 <button className="btn-glass" style={{ fontSize: "0.7rem" }}>MAR_2026_REPORT.PDF</button>
-                 <button className="btn-glass" style={{ fontSize: "0.7rem" }}>FEB_2026_REPORT.PDF</button>
+              <div className="rwa-pdf-grid" style={{ marginTop: "1rem" }}>
+                 <button className="btn-glass" style={{ fontSize: "clamp(0.6rem, 2vw, 0.7rem)", padding: "1rem" }}>MAR_2026_REPORT.PDF</button>
+                 <button className="btn-glass" style={{ fontSize: "clamp(0.6rem, 2vw, 0.7rem)", padding: "1rem" }}>FEB_2026_REPORT.PDF</button>
               </div>
            </div>
         </div>
@@ -118,9 +118,9 @@ function TransparencyMetric({ label, value, source }: { label: string; value: st
 
 function IntelRow({ label, value }: { label: string; value: string }) {
   return (
-    <div style={{ display: "grid", gridTemplateColumns: "180px 1fr", gap: "1rem", alignItems: "center" }}>
-       <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.05em" }}>{label}</span>
-       <span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.9)", fontWeight: "600" }}>{value}</span>
+    <div className="intel-row-grid">
+       <span style={{ fontSize: "0.8rem", color: "rgba(255,255,255,0.3)", textTransform: "uppercase", letterSpacing: "0.05em", wordBreak: "break-word" }}>{label}</span>
+       <span style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.9)", fontWeight: "600", wordBreak: "break-word" }}>{value}</span>
     </div>
   );
 }

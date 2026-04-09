@@ -45,11 +45,11 @@ export function AuditExplorer() {
   return (
     <div className="page-wrapper animate-slide-in-right" style={{ color: "#fff" }}>
       <header style={{ marginBottom: "2.5rem" }}>
-        <h1 className="page-title" style={{ display: "flex", alignItems: "center", gap: "1rem", color: "#CCFF00" }}>
-          <Command width={32} height={32} />
+        <h1 className="page-title" style={{ display: "flex", alignItems: "center", gap: "1rem", color: "#CCFF00", fontSize: "clamp(1.5rem, 5vw, 2.5rem)", wordBreak: "break-word" }}>
+          <Command width={32} height={32} style={{ flexShrink: 0 }} />
           BLACKBOX_AUDIT_ARCHIVE
         </h1>
-        <p className="page-subtitle">Human-readable AI logs. IPFS-anchored agentic execution traces.</p>
+        <p className="page-subtitle" style={{ fontSize: "clamp(0.9rem, 3vw, 1.1rem)" }}>Human-readable AI logs. IPFS-anchored agentic execution traces.</p>
       </header>
 
       <div 
@@ -78,20 +78,17 @@ export function AuditExplorer() {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.1 }}
+              className="audit-log-grid"
               style={{
-                display: "grid",
-                gridTemplateColumns: "100px 150px 1fr 40px",
-                gap: "1.5rem",
                 padding: "1rem",
                 borderBottom: "1px solid rgba(255,255,255,0.03)",
-                alignItems: "center",
                 fontSize: "0.85rem"
               }}
             >
-              <span style={{ color: "rgba(255,255,255,0.2)" }}>[{log.time}]</span>
-              <span style={{ color: "#CCFF00", fontWeight: "700" }}>{log.agent}</span>
-              <span style={{ color: "rgba(255,255,255,0.7)" }}>{log.action}</span>
-              <div style={{ justifySelf: "end" }}>
+              <span className="audit-log-time" style={{ color: "rgba(255,255,255,0.2)" }}>[{log.time}]</span>
+              <span className="audit-log-agent" style={{ color: "#CCFF00", fontWeight: "700" }}>{log.agent}</span>
+              <span className="audit-log-action" style={{ color: "rgba(255,255,255,0.7)" }}>{log.action}</span>
+              <div className="audit-log-status">
                 {log.status === "success" ? <CheckCircle size={16} color="#4ade80" /> : <AlertTriangle size={16} color="#fbbf24" />}
               </div>
             </motion.div>
